@@ -1,34 +1,34 @@
-# Tasks
+# tasks
 
-## Setup
+## setup
 
 - [ ] fork and check out project
   - [ ] `yarn` + `yarn start` (see readme)
   - [ ] let us know if you need further help to bootstrap your local dev environment
 
-## Build Website according to Wireframe
+## build website according to wireframe
 
-## Product Page
+## product page
 
 - [ ] list of products
-  - [ ] side view: shopping cart
-- [ ] hint: feel free to use a library such as material-ui / bootstrap / your choice
+  - [ ] side view: shopping cart (position fixed)
+- [ ] hint: preferably use a library such as material-ui / bootstrap / your choice for styling
 - [ ] hint: feel free to change/amend test-data to your needs
 - [ ] user can add a product to the cart
   - [ ] “add to cart” button
-  - [ ] hint: use context for storing ordered items
+  - [ ] hint: use e.g. context for storing ordered items
   - [ ] cart lists all ordered items
   - [ ] user can submit order when viewing the cart (links order form)
 
-## Order Page
+## order page
 
 - [ ] route + view for order form
   - name + address + shopped items
-  - console.log as submit action is sufficient
-- [ ] `buy now` and `submit` buttons should look the same
-  - [ ] hover effect
+  - console.log with form data submit action is sufficient
+- [ ] `buy now` and `submit` buttons should have the same basic look and feel with icons, but different colors
+  - [ ] hover effect (nice to have)
 
-## Extras (Optional)
+## extras (optional)
 
 - [ ] possible extras
   - [ ] design/implement for mobile too
@@ -36,6 +36,6 @@
   - [ ] tests
   - [ ] user can provide number of ordered items (shop action + cart)
 
-## Submition
+## submission
 
-- [ ] create pull request for your submission
+- [ ] create pull request for your submission (as you would do it for a reviewer in your company, proper description / commit messages)
