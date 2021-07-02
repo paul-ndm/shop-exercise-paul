@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 
 import {useUser} from '../context/user'
 
@@ -29,17 +30,24 @@ const OrderDetails = () => {
         Items
       </Typography>
       <List disablePadding>
-        {cart.map((product: any) => (
+      {cart.map((product : any) => {
+        
+        const {price, name, amount} = product
 
-          <ListItem className={classes.listItem} key={product.name}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+        return (
+          <ListItem key={name}>
+            <ListItemText primary={name} />
+            <ListItemText primary={amount} />
+            <ListItemText primary={`${price}€`} />
           </ListItem>
-        ))}
+        )
+        }
+        )}
+        <Divider />
         <ListItem className={classes.listItem}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" className={classes.total}>
-              {bill}
+          {`${bill}€`}
           </Typography>
         </ListItem>
       </List>

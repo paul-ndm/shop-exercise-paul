@@ -4,7 +4,6 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,6 +11,8 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import Badge from '@material-ui/core/Badge';
 import Button from '@material-ui/core/Button';
 import PaymentIcon from '@material-ui/icons/Payment';
+import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { NavLink } from 'react-router-dom'
 
 import {useUser} from '../context/user'
@@ -19,10 +20,14 @@ import {useUser} from '../context/user'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
   list: {
-    width: 250,
+    width: 400
   },
   button: {
     alignSelf: "center"
+  },
+  total: {
+    display: "flex",
+    justifyContent: "space-around"
   },
   root: {
     '& > *': {
@@ -33,7 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const ShoppingCart = () => {
 
-  const { cart, bill, removeItem, setCheckingout } = useUser()
+  const { cart, bill, removeItem, addItem, setCheckingout } = useUser()
 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -53,11 +58,16 @@ const ShoppingCart = () => {
 
         return (
           <ListItem key={name}>
-            <ListItemIcon></ListItemIcon>
             <ListItemText primary={name} />
             <ListItemText primary={amount} />
-            <ListItemText primary={price} />
-            <IconButton color="secondary" onClick={() => removeItem(product)}>
+            <ListItemText primary={`${price}€`} />
+            <IconButton color="secondary" onClick={() => addItem(product, 1)}>
+                <AddCircleOutlineIcon/>
+            </IconButton>
+            <IconButton color="secondary" onClick={() => removeItem(product, 1, false)}>
+                <RemoveCircleOutlineIcon/>
+            </IconButton>
+            <IconButton color="secondary" onClick={() => removeItem(product, 0, true)}>
                 <HighlightOffIcon/>
             </IconButton>
           </ListItem>
@@ -66,7 +76,10 @@ const ShoppingCart = () => {
         )}
         
         <Divider />
-        <ListItemText primary={bill} />
+        <ListItem key="total">
+        <ListItemText primary="Total Amount:" />
+        <ListItemText primary={`${bill}€`} />
+        </ListItem>
         <Divider />
 
         { cart.length ?  

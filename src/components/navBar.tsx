@@ -63,7 +63,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       transition: theme.transitions.create('width'),
       width: '100%',
@@ -84,7 +83,6 @@ const NavBar = () => {
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       setAnchorEl(event.currentTarget);
-      console.log(event.currentTarget.id)
     };
 
     const handleClose = () => {
@@ -103,8 +101,6 @@ const NavBar = () => {
       setSearchedProducts(results)
 
     }
-    
-
 
     const profilMenuId : string = 'account-info';
     const renderProfil = (
@@ -117,8 +113,14 @@ const NavBar = () => {
         open={isProfileMenuOpen()}
         onClose={handleClose}
       >
+      { userData ?
+        <>
         <MenuItem >{userData.surname} {userData.name}</MenuItem>
         <MenuItem onClick={handleClose}>log out</MenuItem>
+        </>
+        :
+        <MenuItem>no user</MenuItem>
+        }
       </Menu>
     );
 

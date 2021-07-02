@@ -10,20 +10,23 @@ export function useUser() {
 export const UserState = ({children} : any) => {
 
     const [checkingout, setCheckingout] = useState(false)
-    const [userData] = useState<object>(userMaxl)
+    const [userData, setUserData] = useState<object>(userMaxl)
     const [searchedProducts, setSearchedProducts] = useState(products)
     const [cart, setCart] = useState([])
     const [bill, setBill] = useState(0)
     const [windowRounded, setWindowRounded] = useState(Math.floor(window.innerWidth / 100))
 
-    const removeItem = (product : any) => {
+    const removeItem = (product : any, number : number, removeAll: boolean) => {
         setCart((prev : any) : any => {
             const newCart = cart.filter((p : any ) => {
                 if (p.name !== product.name) {
-                    console.log(p)
                     return p
-                } else {
-                    const newAmount = p.amount - 1
+                } 
+                else if (removeAll) {
+                    return false
+                }
+                else {
+                    const newAmount = p.amount - number
                     if (newAmount > 0) {
                         p.amount = newAmount
                         return p
@@ -36,10 +39,11 @@ export const UserState = ({children} : any) => {
         })
     }
 
-    const addItem = (product : any) => {
+    const addItem = (product : any, number : number) => {
+        console.log(number)
         setCart((prev : any) : any => {
             if (!cart.length) {
-                product.amount = 1
+                product.amount = number
                 return [...prev, product]
             } else {
             
@@ -51,14 +55,14 @@ export const UserState = ({children} : any) => {
                     if (p.name !== product.name) {
                         return p
                     } else {
-                        const newAmount = p.amount + product.amount
-                        p.ammount = newAmount
+                        const newAmount = p.amount + number
+                        p.amount = newAmount
                         return p
                     }
                 })
             return newCart
             } else
-                product.amount = 1
+                product.amount = number
                 return [...prev, product]
             }
         })

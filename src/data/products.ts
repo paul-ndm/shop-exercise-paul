@@ -63,52 +63,52 @@ export const products: Product[] = [
   {
     picture: "http://placehold.it/100x100",
     price: 180,
-    name: "cillum",
+    name: "cillum2",
   },
   {
     picture: "http://placehold.it/100x100",
     price: 289,
-    name: "ad",
+    name: "ad2",
   },
   {
     picture: "http://placehold.it/100x100",
     price: 170,
-    name: "culpa",
+    name: "culpa2",
   },
   {
     picture: "http://placehold.it/100x100",
     price: 181,
-    name: "ut",
+    name: "ut2",
   },
   {
     picture: "http://placehold.it/100x100",
     price: 178,
-    name: "consectetur",
+    name: "consectetur2",
   },
   {
     picture: "http://placehold.it/100x100",
     price: 180,
-    name: "cillum",
+    name: "cillum3",
   },
   {
     picture: "http://placehold.it/100x100",
     price: 289,
-    name: "ad",
+    name: "ad3",
   },
   {
     picture: "http://placehold.it/100x100",
     price: 170,
-    name: "culpa",
+    name: "culpa3",
   },
   {
     picture: "http://placehold.it/100x100",
     price: 181,
-    name: "ut",
+    name: "ut3",
   },
   {
     picture: "http://placehold.it/100x100",
     price: 178,
-    name: "consectetur",
+    name: "consectetur3",
   },
 ];
 
