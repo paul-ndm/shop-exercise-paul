@@ -1,24 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NavBar from './components/navBar'
+import ProductCards from './components/card'
+import Checkout from './components/checkout'
+import { Switch, Route, Redirect } from "react-router-dom";
+import { useUser } from './context/user'
+
+
+
 
 function App() {
+
+  const { checkingout } = useUser()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <Switch>
+
+    <Route path='/checkout'>
+      { checkingout ?
+      <Checkout/>
+        :
+      <Redirect to="/" />
+      }
+    </Route>
+
+    <Route path="/">
+      <NavBar />
+      <br/>
+      <ProductCards />
+    </Route>
+
+    </Switch>
+      
     </div>
   );
 }
