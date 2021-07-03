@@ -29,9 +29,8 @@ export const userMaxl: User = {
     region: "Vienna",
     postalCode: 1010,
     country: "Austria"
-  
   },
-  email: "max@mix,de"
+  email: "max@mix.de"
 }
 
 export const products: Product[] = [

@@ -7,104 +7,114 @@ import {useUser} from '../context/user'
 
 const AddressForm = () => {
 
-    const { userData } = useUser()
+    const { shippingForm, setShippingForm } = useUser()
 
-    const {name, surname, email, adresse } = userData
+    const onChange = (event: React.ChangeEvent<any>) => {
+      setShippingForm({ ...shippingForm, [event.target.name]: event.target.value });
+    };
 
   return (
-    <React.Fragment>
+    <div>
       <Typography variant="h6" gutterBottom>
         Shipping address
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
+            onChange={onChange}
             required
-            id="firstName"
-            name="firstName"
+            id="name"
+            name="name"
             label="First name"
             fullWidth
             autoComplete="given-name"
-            defaultValue={surname ? surname : ''}
+            value={shippingForm.name}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            onChange={onChange}
             required
-            id="lastName"
-            name="lastName"
+            id="surname"
+            name="surname"
             label="Last name"
             fullWidth
             autoComplete="family-name"
-            defaultValue={name ? name : ''}
+            value={shippingForm.surname}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            onChange={onChange}
             required
             id="street"
             name="street"
             label="Street"
             fullWidth
             autoComplete="shipping street"
-            defaultValue={adresse ? adresse.street : ''}
+            value={shippingForm.street}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            onChange={onChange}
             required
-            id="e-mail"
-            name="e-mail"
+            id="email"
+            name="email"
             label="E-Mail"
             fullWidth
             autoComplete="e-mail"
-            defaultValue={email ? email : ''}
+            value={shippingForm.email}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            onChange={onChange}
             required
             id="city"
             name="city"
             label="City"
             fullWidth
             autoComplete="shipping address-level2"
-            defaultValue={adresse ? adresse.city : ''}
+            value={shippingForm.city}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField 
+          <TextField
+          onChange={onChange}
           id="region" 
           name="region" 
           label="Region" 
           fullWidth
-          defaultValue={adresse ? adresse.region : ''}
+          value={shippingForm.region}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            onChange={onChange}
             required
             id="Postal code"
-            name="Postal code"
+            name="postalCode"
             label="Postal code"
             fullWidth
             autoComplete="shipping postal-code"
-            defaultValue={adresse ? adresse.postalCode : ''}
+            value={shippingForm.postalCode}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            onChange={() => onChange}
             required
             id="country"
             name="country"
             label="Country"
             fullWidth
             autoComplete="shipping country"
-            defaultValue={adresse ? adresse.country : ''}
+            value={shippingForm.country}
           />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </div>
   );
 }
 

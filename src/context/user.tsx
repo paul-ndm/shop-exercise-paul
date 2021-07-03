@@ -10,11 +10,22 @@ export function useUser() {
 export const UserState = ({children} : any) => {
 
     const [checkingout, setCheckingout] = useState(false)
-    const [userData, setUserData] = useState<object>(userMaxl)
+    const [userData] = useState<any>(userMaxl)
     const [searchedProducts, setSearchedProducts] = useState(products)
     const [cart, setCart] = useState([])
     const [bill, setBill] = useState(0)
     const [windowRounded, setWindowRounded] = useState(Math.floor(window.innerWidth / 100))
+
+    const [shippingForm, setShippingForm] = useState({
+        name: (userData.name ? userData.name : ""),
+        surname: (userData.surname ? userData.surname : ""),
+        email: (userData.email ? userData.email : ""),
+        street: (userData.adresse ? userData.adresse.street : ""),
+        city: (userData.adresse ? userData.adresse.city : ""),
+        region: (userData.adresse ? userData.adresse.region : ""),
+        postalCode: (userData.adresse ? userData.adresse.postalCode : ""),
+        country: (userData.adresse ? userData.adresse.postalCode : ""),
+      });
 
     const removeItem = (product : any, number : number, removeAll: boolean) => {
         setCart((prev : any) : any => {
@@ -40,7 +51,6 @@ export const UserState = ({children} : any) => {
     }
 
     const addItem = (product : any, number : number) => {
-        console.log(number)
         setCart((prev : any) : any => {
             if (!cart.length) {
                 product.amount = number
@@ -92,12 +102,15 @@ export const UserState = ({children} : any) => {
         bill,  
         checkingout, 
         setCheckingout, 
-        userData, 
+        userData,
         cart, 
         searchedProducts,  
         setSearchedProducts,
         addItem,  
-        removeItem}
+        removeItem,
+        shippingForm, 
+        setShippingForm
+    }
 
 
     return (

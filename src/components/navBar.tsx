@@ -114,10 +114,10 @@ const NavBar = () => {
         onClose={handleClose}
       >
       { userData ?
-        <>
+        <div>
         <MenuItem >{userData.surname} {userData.name}</MenuItem>
         <MenuItem onClick={handleClose}>log out</MenuItem>
-        </>
+        </div>
         :
         <MenuItem>no user</MenuItem>
         }

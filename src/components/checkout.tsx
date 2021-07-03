@@ -13,14 +13,18 @@ import {useUser} from '../context/user'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex'
+      display: 'flex',
+      flexWrap: "wrap"
+      
     },
     adress: {
+      minWidth: 250,
       margin: theme.spacing(2),
       padding: theme.spacing(2),
       width: "70%"
     },
     order: {
+      minWidth: 250,
       margin: theme.spacing(2),
       padding: theme.spacing(2),
       width: "20%"
@@ -34,15 +38,14 @@ const useStyles = makeStyles((theme: Theme) =>
 const Checkout = () =>  {
   const classes = useStyles();
 
-  const { setCheckingout, windowRounded, userData, bill, cart } = useUser()
+  const { setCheckingout, bill, cart, shippingForm } = useUser()
 
-  const totalWidth = Math.floor(windowRounded / 2.5) * 250
 
-  const message = `${userData.name} ${userData.surname} bought goods for a total of ${bill}€. The order includes: ${cart.map((product: any) => `${product.amount} ${product.name} for ${product.price} per pice`)}. The Order is delivered to ${userData.adresse.street} in ${userData.adresse.city}.`
+  const message = `${shippingForm.name} ${shippingForm.surname} bought goods for a total of ${bill}€. The order includes: ${cart.map((product: any) => `${product.amount} ${product.name} for ${product.price} per pice `)}. The Order is delivered to ${shippingForm.street},${shippingForm.postalCode} in ${shippingForm.city} - ${shippingForm.country}. A recipe has been send to ${shippingForm.email}`
 
   return (
     <Grid>
-    <Grid className={classes.root} style={{width: totalWidth}}>
+    <Grid className={classes.root}>
 
       <Paper className={classes.order}>
         <OrderDetails />
