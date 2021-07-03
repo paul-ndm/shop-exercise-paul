@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: 220,
-      padding: "15px"
+      padding: theme.spacing(2)
     },
     media: {
       height: 140,
@@ -32,15 +32,16 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       display: "flex",
       flexGrow: 1,
-      justifyContent: "center"  
+      justifyContent: "center" 
     },
     gridStyles: {
       display: "grid",
     },
     innerCard: {
+      position: 'relative',
       display: "flex",
-      justifyContent: "space-between"
-    },
+      justifyContent: "space-between",
+  },
     buttonSection: {
       display: "flex",
       justifyContent: "space-around"
@@ -80,7 +81,7 @@ const ProductCards = () => {
 
     return(
 
-    <Grid className={classes.root}>
+    <Grid className={classes.root} key={product.name}>
     <Card>
       <CardActionArea>
         <CardMedia
@@ -97,6 +98,7 @@ const ProductCards = () => {
         </CardContent>
       </CardActionArea>
       <CardActions>
+
       {
       inCart ?
 
